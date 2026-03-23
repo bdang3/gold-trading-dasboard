@@ -1,0 +1,2 @@
+package com.goldtrading.backend.botoperations.repository; import com.goldtrading.backend.botoperations.domain.entity.BotOperation; import com.goldtrading.backend.common.OperationStatus; import org.springframework.data.jpa.repository.JpaRepository; import java.util.List; import java.util.UUID; public interface BotOperationRepository extends JpaRepository<BotOperation, UUID> { List<BotOperation> findTop20ByStatusOrderByCreatedAtAsc(OperationStatus status); }
+

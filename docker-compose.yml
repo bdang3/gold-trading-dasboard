@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: gtb-postgres
+    environment:
+      POSTGRES_DB: goldtrading
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: gtb-redis
+    ports:
+      - "6379:6379"
+
+  app:
+    build: .
+    container_name: gtb-backend
+    env_file:
+      - .env.example
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
