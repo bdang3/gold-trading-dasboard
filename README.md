@@ -13,8 +13,10 @@ Spring Boot backend for Trading Bot Management Platform.
 ## Run locally
 1. Ensure Java 21 is installed.
 2. `docker compose up -d postgres redis`
-3. Copy `.env.example` to `.env` and adjust values.
-   - Set `CORS_ALLOWED_ORIGINS` to your FE deploy URL (comma-separated for multiple origins).
+3. Copy `.env.example` to `.env` and adjust values for local:
+   - `APP_PORT=8088`
+   - `CORS_ALLOWED_ORIGINS=http://localhost:5173`
+   - set `APP_JWT_SECRET_BASE64` and `APP_MT5_ENCRYPTION_KEY`
 4. `mvn spring-boot:run`
 
 ## Build
